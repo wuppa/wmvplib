@@ -13,9 +13,7 @@ public abstract class BaseMvpActivity<M extends BaseModel, V extends BaseView, P
         //创建Presenter
         presenter = createPresenter();
         if (presenter != null) {
-            //将Model层注册到Presenter中
             presenter.registerModel(createModel());
-            //将View层注册到Presenter中
             presenter.registerView(createView());
         }
     }
@@ -24,7 +22,6 @@ public abstract class BaseMvpActivity<M extends BaseModel, V extends BaseView, P
     protected void onDestroy() {
         super.onDestroy();
         if (presenter != null) {
-            //Activity销毁时的调用，让具体实现BasePresenter中onViewDestroy()方法做出决定
             presenter.destroy();
         }
     }
